@@ -37,7 +37,7 @@ class Play:
                 pp_tmp -= card.cost
                 self.__hand.remove(card)
                 self.__play_card(card)
-                if card.name == "STyoetu":
+                if card.name == "Dshift":
                     print("Tyoetu is used in turn %d." % self.__pp)
                     self.__tyoetu_used = True
 
@@ -51,26 +51,27 @@ class Play:
         for i in range(play_card.draw):
             self.__draw()
         for i in range(play_card.draw_spell):
-            self.__hand.append(S())
+            self.__hand.append(TokenSpell())
 
 
 class Deck:
     def __init__(self):
         cards = \
-            [SAngele(), SAngele(), SAngele(),
-             SJikken(), SJikken(),
-             STie(), STie(), STie(),
-             SMaria(),
-             FOwl(), FOwl(), FOwl(),
-             SMissile(), SMissile(), SMissile(),
-             SBlast(), SBlast(), SBlast(),
-             SNiji(), SNiji(), SNiji(),
-             SGorem(), SGorem(), SGorem(),
-             SSeisin(), SSeisin(), SSeisin(),
-             SUnmei(), SUnmei(), SUnmei(),
-             SAkugeki(), SAkugeki(),
-             STyoetu(), STyoetu(), STyoetu(),
-             F(), F(), F(), F(), F()]
+            [Snipe(),Snipe(),Snipe(),
+            Experiment(),Experiment(),
+            Insight(),Insight(),Insight(),
+            Knowledge(),
+            Owl(),Owl(),Owl(),
+            Missile(),Missile(),Missile(),
+            Blast(),Blast(),Blast(),
+            Glow(),Glow(),Glow(),
+            Assault(),Assault(),Assault(),
+            Concentration(),Concentration(),Concentration(),
+            Fate(),Fate(),Fate(),
+            Embrace(),Embrace(),
+            Dshift(),Dshift(),Dshift(),
+            F(),F(),F(),
+            F(),F()]
         random.shuffle(cards)
         self.__cards = cards
 
@@ -102,69 +103,69 @@ class Card:
             self.cost = 0
 
 
-class SAngele(Card):
+class Snipe(Card):
     def __init__(self):
-        super().__init__("SAngle", 1, 0, 0, 0)
+        super().__init__("Snipe", 1, 0, 0, 0)
 
 
-class SJikken(Card):
+class Experiment(Card):
     def __init__(self):
-        super().__init__("SJikken", 1, 0, 0, 0)
+        super().__init__("Experiment", 1, 0, 0, 0)
 
 
-class STie(Card):
+class Insight(Card):
     def __init__(self):
-        super().__init__("STie", 1, 0, 1, 0)
+        super().__init__("Insight", 1, 0, 1, 0)
 
 
-class SMaria(Card):
+class Knowledge(Card):
     def __init__(self):
-        super().__init__("SMaria", 1, 0, 0, 1)
+        super().__init__("Knowledge", 1, 0, 0, 1)
 
 
-class FOwl(Card):
+class Owl(Card):
     def __init__(self):
-        super().__init__("SOwl", 2, 2, 0, 0, is_spell=False)
+        super().__init__("Owl", 2, 2, 0, 0, is_spell=False)
 
 
-class SMissile(Card):
+class Missile(Card):
     def __init__(self):
-        super().__init__("SMissile", 2, 0, 1, 0)
+        super().__init__("Missile", 2, 0, 1, 0)
 
 
-class SBlast(Card):
+class Blast(Card):
     def __init__(self):
-        super().__init__("SBurst", 2, 0, 0, 0)
+        super().__init__("Blast", 2, 0, 0, 0)
 
 
-class SNiji(Card):
+class Glow(Card):
     def __init__(self):
-        super().__init__("SNiji", 2, 0, 1, 0)
+        super().__init__("Glow", 2, 0, 1, 0)
 
 
-class SGorem(Card):
+class Assault(Card):
     def __init__(self):
-        super().__init__("SGorem", 2, 0, 0, 1)
+        super().__init__("Assault", 2, 0, 0, 1)
 
 
-class SSeisin(Card):
+class Concentration(Card):
     def __init__(self):
-        super().__init__("SSeisin", 3, 0, 2, 0)
+        super().__init__("Concentration", 3, 0, 2, 0)
 
 
-class SUnmei(Card):
+class Fate(Card):
     def __init__(self):
-        super().__init__("SUnmei", 5, 0, 2, 0, reducible=True)
+        super().__init__("Fate", 5, 0, 2, 0, reducible=True)
 
 
-class SAkugeki(Card):
+class Embrace(Card):
     def __init__(self):
-        super().__init__("SAkugeki", 8, 0, 0, 0, reducible=True)
+        super().__init__("Embrace", 8, 0, 0, 0, reducible=True)
 
 
-class STyoetu(Card):
+class Dshift(Card):
     def __init__(self):
-        super().__init__("STyoetu", 20, 0, 0, 0, reducible=True)
+        super().__init__("Dshift", 20, 0, 0, 0, reducible=True)
 
 
 class F(Card):
@@ -172,7 +173,6 @@ class F(Card):
         super().__init__("F", 1, 0, 0, 0, reducible=False, is_spell=False)
 
 
-class S(Card):
+class TokenSpell(Card):
     def __init__(self):
-        super().__init__("S", 1, 0, 0, 0)
-
+        super().__init__("TokenSpell", 1, 0, 0, 0)
